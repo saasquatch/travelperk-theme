@@ -1,0 +1,50 @@
+<td>
+  <img class="img-circle squatch-referrals-avatar" src="http://www.gravatar.com/avatar/3a99ddeabe3bcca7f64938b753005735?s=40&d=mm&r=pg">
+
+  <div class="squatch-referrals-heading">
+    {{#if (stringCompare rewardSource "MANUAL" emptyOnFalse=true)}}
+      {{variables 'widget.REFERRER_WIDGET.content.textVariables.nonReferralReward.manualTitle'}}
+    {{else}}
+      {{variables 'widget.REFERRER_WIDGET.content.textVariables.nonReferralReward.programTitle'}}
+    {{/if}}
+    
+  </div>
+
+  <div class="squatch-referrals-description">
+    <span class="hidden-sm">
+      {{description}}
+    </span>
+  </div>
+</td>
+
+<td class="hidden-sm">
+  <div class="squatch-referrals-heading">
+    {{heading}}
+  </div>
+
+  <div class="squatch-referrals-description" data-moment="true">{{dateGiven}}</div>
+</td>
+
+<td>
+  <i class="icon squatch-referrals-icon icon-ok-circled text-green"></i>
+
+  <div class="squatch-referrals-heading hidden-sm">
+    {{#if (stringCompare unit "CENTS" emptyOnFalse=true)}}
+        {{variables 'widget.REFERRER_WIDGET.content.textVariables.nonReferralReward.creditReward'}}
+    {{else}}
+      {{#if (stringCompare unit "MONTH" emptyOnFalse=true)}}
+        {{variables 'widget.REFERRER_WIDGET.content.textVariables.nonReferralReward.timeReward'}}
+      {{else}}
+        {{#if (stringCompare unit "%" emptyOnFalse=true)}}
+          {{value}}{{unit}}
+        {{else}}
+          {{value}} {{unit}}
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  </div>
+
+  <div class="squatch-referrals-description hidden-sm text-green">
+    {{variables 'widget.REFERRER_WIDGET.content.textVariables.nonReferralReward.description'}}
+  </div>
+</td>

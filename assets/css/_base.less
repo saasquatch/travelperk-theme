@@ -1,0 +1,99 @@
+body {
+  // Show background colour of the page the widget is embedded in
+  background: transparent;
+}
+
+.squatch-container {
+  font-family: 'Lato', sans-serif;
+  width: @container-width;
+  position: relative;
+
+  @media (max-width: @container-width) {
+    width: 100%;
+  }
+}
+
+.squatch-body {
+  padding: @body-padding @body-padding 20px;
+
+  @media (max-width: @screen-sm-max) {
+    padding: @body-padding-sm;
+  }
+}
+
+.squatch-title>p,
+.squatch-lead>p,
+.squatch-cta>p {
+  text-align: center;
+}
+
+.squatch-title {
+  margin: 0 0 22px;
+  color: @blue;
+
+  @media (max-width: @screen-sm-max) {
+    font-size: @font-size-xl;
+    padding: 0 0 @body-padding-sm;
+    margin: 0;
+  }
+}
+
+.squatch-lead {
+  font-size: @font-size-sm;
+
+  @media (max-width: @screen-sm-max) {
+    margin-left: -@body-padding-sm;
+    margin-right: -@body-padding-sm;
+    padding: @body-padding-sm @body-padding-sm 0;
+    border-top: 1px solid @gray-lighter;
+  }
+}
+
+.squatch-cta {
+  margin: 0 0 26px;
+
+  b {
+    color: @gray-darker;
+  }
+}
+
+.squatch-register {
+  border-top: 1px solid @gray-lighter;
+  padding: 15px 30px 30px 30px;
+  font-size: @font-size-sm;
+  text-align: center;
+
+  .form {
+    margin-top: 20px;
+  }
+
+  .input-field {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    &.form-control {
+
+      &.invalid {
+        border-color: #ff677f;
+      }
+
+      &.valid {
+        border-color: @green;
+      }
+    }
+  }
+
+  #squatch-send-email {
+    .button-variant(@white; @green; @green);
+    width: 100%;
+    max-width: 130px;
+    margin-top: 10px;
+  }
+}
+
+#cta {
+  display: none;
+}

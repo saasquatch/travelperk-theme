@@ -1,0 +1,148 @@
+.squatch-share {
+  > .form-group {
+    @media (max-width: @screen-sm-max) {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+#squatch-share-link {
+  color: @text-color;
+  background: transparent;
+  cursor: text;
+}
+
+#squatch-share-notification {
+  position: absolute;
+  top: 10px;
+  right: 156px;
+  z-index: 100;
+
+  @media (max-width: @screen-sm-max) {
+    right: 50px;
+  }
+}
+
+[data-clipboard-target='#squatch-share-link'] {
+  width: 140px;
+
+  &.hover {
+    background: darken(@btn-primary-bg, 10%);
+    border-color: darken(@btn-primary-border, 12%);
+  }
+
+  @media (max-width: @screen-sm-max) {
+    width: auto;
+
+    .icon {
+      width: 39px;
+      margin-right: 0;
+    }
+  }
+}
+
+.share-btn-container {
+  margin-left: -6px;
+  text-align: center;
+  @media (max-width: @screen-sm-max) {
+    margin-left: 0;
+  }
+}
+
+.squatch-share-btn {
+  &:extend(.icon-btn all);
+  width: 140px;
+  display: inline-block;
+  margin-left: 6px;
+  margin-bottom: 10px;
+
+  html.lt-ie9 & {
+    width: 139px;
+  }
+
+  @media (max-width: @screen-sm-max) {
+    width: 100%;
+    margin-top: @grid-gutter-width;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+}
+
+.emailShare,
+.fbShare,
+.twShare,
+.linkedinShare {
+
+  &.hidden {
+    display: none;
+  }
+
+  &.mobile-only {
+    display: none;
+
+    @media (max-width: @screen-sm-max) {
+      display: block;
+    }
+  }
+
+  &.desktop-only {
+    @media (max-width: @screen-sm-max) {
+      display: none;
+    }
+  }
+}
+
+.messengerShare {
+
+  &.hidden {
+    display: none;
+  }
+
+  &.mobile-only {
+    display: none;
+  }
+
+  &.desktop-only {
+    @media (max-width: @screen-sm-max) {
+      display: none;
+    }
+  }
+
+  @media (max-width: @screen-sm-max) {
+    display: none;
+  }
+}
+
+.messengerMobile {
+  display: none;
+
+  &.mobile-and-desktop,
+  &.mobile-only {
+    @media (max-width: @screen-sm-max) {
+      display: block;
+    }
+  }
+
+  &.hidden,
+  &.desktop-only {
+    @media (max-width: @screen-sm-max) {
+      display: none;
+    }
+  }
+}
+
+.smsShare,
+.whatsappShare {
+
+  &.hidden {
+    display: none;
+  }
+
+  &.mobile-only {
+    display: none;
+
+    @media (max-width: @screen-sm-max) {
+      display: block;
+    }
+  }
+}

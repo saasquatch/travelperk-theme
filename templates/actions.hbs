@@ -1,0 +1,31 @@
+<div class="squatch-actions" data-referrals="{{#if referredBy.dateReferred}}{{#if referredBy.hasCancelledReferredReward}}{{nonCancelledReferralAndRewardsListLength}}{{else}}{{math nonCancelledReferralAndRewardsListLength '+ 1'}}{{/if}}{{else}}{{nonCancelledReferralAndRewardsListLength}}{{/if}}"
+  {{#if referredBy.hasCancelledReferredReward}}
+    data-referredBy="0"
+  {{else}}
+    {{#unless referredBy.dateReferred}}
+        data-referredBy="0"
+    {{/unless}}  
+  {{/if}}
+>
+  <button data-open-panel="#squatch-panel" class="btn btn-default
+    {{#unless hasNonCancelledReferralsOrRewards}}
+      disabled
+    {{/unless}}
+  ">
+    {{#if referrals}}
+      {{variables 'widget.REFERRER_WIDGET.content.textVariables.referralsScroll.showReferrals'}}
+    {{else}}
+      {{#if referredBy.dateReferred}}
+        {{variables 'widget.REFERRER_WIDGET.content.textVariables.referralsScroll.showReferrals'}}
+      {{else}}
+        {{#if rewardsBySource.MANUAL}}
+          {{variables 'widget.REFERRER_WIDGET.content.textVariables.referralsScroll.showReferrals'}}
+        {{else}}
+          {{variables 'widget.REFERRER_WIDGET.content.textVariables.noReferrals'}}
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  </button>
+
+  {{> attribution}}
+</div>

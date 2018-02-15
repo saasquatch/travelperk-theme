@@ -1,0 +1,42 @@
+.squatch-container-hosted,
+.squatch-container-mobile,
+.squatch-container-demo_embed {
+  .squatch-header-close,
+  .squatch-actions,
+  [data-close-panel] {
+    display: none;
+  }
+
+  // Show `No Referrals Yet...` when no referrals in embed mode
+  .squatch-actions[data-referrals="0"][data-referrals="0"] {
+    display: block;
+  }
+
+  .fbMobile,
+  .twMobile,
+  .linkedinMobile {
+    display: none;
+
+    &.mobile-and-desktop,
+    &.mobile-only {
+      @media (max-width: @screen-sm-max) {
+        display: block;
+      }
+    }
+
+    &.hidden,
+    &.desktop-only {
+      @media (max-width: @screen-sm-max) {
+        display: none;
+      }
+    }
+  }
+
+  .fbShare,
+  .twShare,
+  .linkedinShare {
+    @media (max-width: @screen-sm-max) {
+      display: none;
+    }
+  }
+}

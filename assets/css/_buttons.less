@@ -1,0 +1,65 @@
+.icon-btn {
+  border-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  text-align: left;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    bottom: -1px;
+    background: fade(@white, 18%);
+    width: 40px;
+  }
+
+  .icon {
+    width: 42px;
+    margin-right: 20px;
+  }
+}
+
+.btn-email {
+  .button-variant(@btn-email-color; @btn-email-bg; @btn-email-border);
+}
+
+.btn-facebook {
+  .button-variant(@btn-facebook-color; @btn-facebook-bg; @btn-facebook-border);
+}
+
+.btn-twitter {
+  .button-variant(@btn-twitter-color; @btn-twitter-bg; @btn-twitter-border);
+}
+
+.btn-linkedin {
+  .button-variant(@btn-linkedin-color; @btn-linkedin-bg; @btn-linkedin-border);
+}
+
+.btn-messenger {
+  .button-variant(@btn-messenger-color; @btn-messenger-bg; @btn-messenger-border);
+
+  .icon {
+    margin-right: 10px;
+  }
+}
+
+.btn-sms {
+  .button-variant(@btn-sms-color; @btn-sms-bg; @btn-sms-border);
+}
+
+.btn-whatsapp {
+  .button-variant(@btn-whatsapp-color; @btn-whatsapp-bg; @btn-whatsapp-border);
+}
+
+button[data-scroll-element]{
+
+  &.disabled {
+    cursor: default;
+  }
+
+  &:focus {
+    outline: 0 !important;
+  }
+}

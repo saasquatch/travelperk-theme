@@ -1,0 +1,83 @@
+{{!--
+
+  Core JavaScript to power widget functionality.
+
+  TODO: Eventually this should get merged in as part of the {{squatchHead}} core helper instead of being manually included in every template
+
+  Eventually we can abstract this.
+
+--}}
+
+<script>
+  window.squatch = window.squatch || {};
+
+  window.squatch.user = {
+    code     : '{{referredBy.referredByUser.referralCode}}',
+    sharelink: '{{shareLinks.shareLink}}',
+    email    : {
+      share : {
+        subject: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.EMAIL.emailShareSubject')}}',
+        body: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.EMAIL.emailShareBody') space="%20"}}',
+        mailToLink: 'mailto:?subject={{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.EMAIL.emailShareSubject') space="%20"}}&body={{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.EMAIL.emailShareBody') space="%20"}}',
+      },
+      reminder: {
+        subject: '{{urlencode (stringFormat "How do you like %s so far?" companyName) space="%20"}}',
+        body: '{{urlencode (stringFormat "Hey,%n %nI saw that you signed up for %s. What do you think of it so far?%n %nBy the way, if you\'ve lost the link to %s, here it is again - %s" companyName companyName shareLinks.emailShareLink) space="%20"}}',
+        mailToLink: 'mailto:?subject={{urlencode (stringFormat "How do you like %s so far?" companyName) space="%20"}}&body={{urlencode (stringFormat "Hey,%n %nI saw that you signed up for %s. What do you think of it so far?%n %nBy the way, if you\'ve lost the link to %s, here it is again - %s" companyName companyName shareLinks.emailShareLink) space="%20"}}',
+      },
+      type: 'UNKNOWN'
+    },
+    facebook: {
+      title: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.FACEBOOK.facebookShareSubject')}}',
+      summary: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.FACEBOOK.facebookShareBody')}}',
+      link: '{{shareLinks.facebookShareLink}}',
+{{#if (variables 'widget.REFERRER_WIDGET.content.sharingOptions.FACEBOOK.facebookShareImageURL')}}
+      shareImage: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.FACEBOOK.facebookShareImageURL')}}',
+{{else}}
+      shareImage: null,
+{{/if}}
+      appId: '157382547792399',
+      redirectUrl: 'http://app.referralsaasquatch.com/widget/close'
+    },
+    twitter: {
+      message: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.TWITTER.twitterShareBody')}}'
+    },
+    sms: {
+      body: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.SMS.smsShareBody') space="%20"}}'
+    },
+    whatsapp: {
+      body: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.WHATSAPP.whatsAppShareBody') space="%20"}}'
+    },
+    linkedin: {
+      title: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.LINKEDIN.linkedinShareSubject')}}',
+      summary: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.LINKEDIN.linkedinShareBody')}}',
+      link: '{{share-link 'LINKEDIN'}}',
+    {{#if variables.widget.REFERRER_WIDGET.content.sharingOptions.LINKEDIN.linkedinShareImageURL}}
+      shareImage: '{{urlencode (variables 'widget.REFERRER_WIDGET.content.sharingOptions.LINKEDIN.linkedinShareImageURL')}}',
+    {{else}}
+      shareImage: null,
+    {{/if}}
+      appId: '157382547792399',
+      redirectUrl: 'http://app.referralsaasquatch.com/widget/close'
+    },
+    fallbackImg: 'https://www.gravatar.com/avatar/0?d=blank'
+  };
+
+  window.squatch.analytics = {
+    attributes: {
+      tenant   : '{{tenantAlias}}',
+      userId   : '{{user.id}}',
+      accountId: '{{user.accountId}}'
+    }
+  };
+
+  window.squatch.mode = {
+    widgetMode     : '{{mode}}',
+    POPUP_MODE     : 'POPUP',
+    EMBED_MODE     : 'EMBED',
+    DEMO_MODE      : 'DEMO',
+    DEMO_EMBED_MODE: 'DEMO_EMBED',
+    NOCONTENT_MODE : 'NOCONTENT'
+  };
+
+</script>
